@@ -5,67 +5,57 @@
  * Date: 2016/8/2
  * Time: 14:16
  */
-define('SITE_PATH', getcwd());
+
 //namespace Home\Service;
 //use Think\Model;
 
+require_once 'functions.php';//DB配置文件
 
-
-$tmp_file = $_FILES['file_path']['tmp_name'];
+define('SITE_PATH', getcwd());
+$conn = connectDb();//连接数据库
+$tmp_file = $_FILES['file_path']['tmp_name'];//获取临时文件名
 $file_types = explode ( ".", $_FILES ['file_path'] ['name'] );
-$file_type = $file_types [count ( $file_types ) - 1];
+$file_type = $file_types [count ( $file_types ) - 1];//获取文件类型
 if(empty($_FILES['file_path']['name'])){
     die('您没有选择任何文件！');
 }else{
-//    print_r($_FILES);
-//    print_r($tmp_file);
-//    print_r($file_types['1']);
     if (strtolower ( $file_type ) != "xls")
     {
     die( '不是Excel文件，重新上传' );
-    }
+    }//判断是否为Excel文件
 
 
     $str = date('Ymdhis');
     $file_name = $str . "." . $file_type;
     $save_path = SITE_PATH."/upfiles/$file_name";
-//    echo "$save_path";
     move_uploaded_file($tmp_file,$save_path);
     if (file_exists($save_path)){
         echo '上传成功';
+        echo '<br />';
     }else{
         die('上传失败');
-    }
+    }//上传文件
     error_reporting(E_ALL); //开启错误
     set_time_limit(0); //脚本不超时
-    date_default_timezone_set('Europe/London'); //设置时间
-    /** Include path **/
-    set_include_path(get_include_path() . PATH_SEPARATOR . 'http://www.jb51.net/../Classes/');//设置环境变量
+    date_default_timezone_set('Asia/Shanghai'); //设置时间
     /** PHPExcel_IOFactory */
     include './Excel/PHPExcel/IOFactory.php';
-//$inputFileType = 'Excel5'; //这个是读 xls的
-    $inputFileType = 'Excel2007';//这个是计xlsx的
-//$inputFileName = './sampleData/example2.xls';
+//  $inputFileType = 'Excel5'; //这个是读 xls的
+    $inputFileType = 'Excel2007';//这个是xlsx的
     $inputFileName = "$save_path";
-    echo 'Loading file ',pathinfo($inputFileName,PATHINFO_BASENAME),' using IOFactory with a defined reader type of ',$inputFileType,'<br />';
-    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+    echo '上传文件中... ',pathinfo($inputFileName,PATHINFO_BASENAME),'<br />';
     $objPHPExcel = PHPExcel_IOFactory::load($inputFileName);
-//    $objPHPExcel = $objReader->load($inputFileName);
-    /*
-    $sheet = $objPHPExcel->getSheet(0);
-    $highestRow = $sheet->getHighestRow(); //取得总行数
-    $highestColumn = $sheet->getHighestColumn(); //取得总列
-    */
-    $objWorksheet = $objPHPExcel->getActiveSheet();//取得总行数
-    $highestRow = $objWorksheet->getHighestRow();//取得总列数
+    $objWorksheet = $objPHPExcel->getActiveSheet();//取得总表数
+    $highestRow = $objWorksheet->getHighestRow();//取得总行数
     echo 'highestRow='.$highestRow;
     echo "<br>";
     $highestColumn = $objWorksheet->getHighestColumn();
     $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);//总列数
+    echo 'highestColumn='.$highestColumn;
+    echo "<br />";
     echo 'highestColumnIndex='.$highestColumnIndex;
     echo "<br />";
-    $headtitle=array();
-    for ($row = 1;$row <= $highestRow;$row++)
+    for ($row = 2;$row <= $highestRow;$row++)
     {
         $strs=array();
         //注意highestColumnIndex的列数索引从0开始
@@ -74,7 +64,7 @@ if(empty($_FILES['file_path']['name'])){
             $strs[$col] =$objWorksheet->getCellByColumnAndRow($col, $row)->getValue();
         }
         $info = array(
-            'id'=>"$strs[0]",
+            'rid'=>"$strs[0]",
             'title'=>"$strs[1]",
             'status'=>"$strs[2]",
             'result'=>"$strs[3]",
@@ -94,10 +84,36 @@ if(empty($_FILES['file_path']['name'])){
             'reason'=>"$strs[17]",
             'pic'=>"$strs[18]",
         );
-        //在这儿，你可以连接，你的数据库，写入数据库了
-        print_r($info);
-        echo '<br />';
+        //从excel文件生成数组
+
+        if($conn){
+            $rid = $info['rid'];
+            $title = $info['title'];
+            $status = $info['status'];
+            $result = $info['result'];
+            $stime = $info['stime'];
+            $etime = $info['etime'];
+            $number = $info['number'];
+            $name = $info['name'];
+            $depart = $info['depart'];
+            $historyname = $info['historyname'];
+            $record = $info['record'];
+            $nowname = $info['nowname'];
+            $ctime = $info['ctime'];
+            $type = $info['type'];
+            $astime = $info['astime'];
+            $aetime = $info['aetime'];
+            $days = $info['days'];
+            $reason = $info['reason'];
+            $pic = $info['pic'];
+            mysqli_query($conn,"INSERT INTO details(rid,title,status,result,stime,etime,num,name,depart,historyname,record,nowname,ctime,type,astime,aetime,days,reason,pic) VALUES ('$rid','$title','$status','$result','$stime','$etime','$number','$name','$depart','$historyname','$record','$nowname','$ctime','$type','$astime','$aetime','$days','$reason','$pic')");
+            if(mysqli_errno($conn)){
+                echo mysqli_error($conn);
+            }else{
+                echo "数据库插入成功！";
+            }//数据库插入
+        }
     }
+    unlink($save_path);
 }
-
-
+?>
