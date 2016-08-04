@@ -106,14 +106,13 @@ if(empty($_FILES['file_path']['name'])){
             $days = $info['days'];
             $reason = $info['reason'];
             $pic = $info['pic'];
-            mysqli_query($conn,"INSERT INTO details(rid,title,status,result,stime,etime,num,name,depart,historyname,record,nowname,ctime,type,astime,aetime,days,reason,pic) VALUES ('$rid','$title','$status','$result','$stime','$etime','$number','$name','$depart','$historyname','$record','$nowname','$ctime','$type','$astime','$aetime','$days','$reason','$pic')");
+            mysqli_query($conn,"INSERT INTO details(rid,title,status,result,stime,etime,num,name,depart,historyname,record,nowname,ctime,type,astime,aetime,days,reason,pic) SELECT '$rid','$title','$status','$result','$stime','$etime','$number','$name','$depart','$historyname','$record','$nowname','$ctime','$type','$astime','$aetime','$days','$reason','$pic' FROM DUAL WHERE '$rid' NOT IN (SELECT rid FROM details)");
             if(mysqli_errno($conn)){
                 echo mysqli_error($conn);
-            }else{
-                echo "数据库插入成功！";
-            }//数据库插入
+            }//数据库插入以rid为标准不重复插入
         }
     }
+    echo "<script>alert('数据库导入成功！');parent.location.href='history.php';</script>";
     unlink($save_path);
 }
 ?>
