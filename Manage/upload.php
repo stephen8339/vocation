@@ -9,7 +9,7 @@
 //namespace Home\Service;
 //use Think\Model;
 
-require_once './config/functions.php';//DB配置文件
+require_once '../config/functions.php';//DB配置文件
 
 define('SITE_PATH', getcwd());
 $conn = connectDb();//连接数据库
@@ -39,7 +39,7 @@ if(empty($_FILES['file_path']['name'])){
     set_time_limit(0); //脚本不超时
     date_default_timezone_set('Asia/Shanghai'); //设置时间
     /** PHPExcel_IOFactory */
-    include './Excel/PHPExcel/IOFactory.php';
+    include '../Excel/PHPExcel/IOFactory.php';
 //  $inputFileType = 'Excel5'; //这个是读 xls的
     $inputFileType = 'Excel2007';//这个是xlsx的
     $inputFileName = "$save_path";
@@ -106,6 +106,10 @@ if(empty($_FILES['file_path']['name'])){
             $days = $info['days'];
             $reason = $info['reason'];
             $pic = $info['pic'];
+            echo $name;
+            echo "<br />";
+            echo $days;
+            echo "<br />";
             mysqli_query($conn,"INSERT INTO details(rid,title,status,result,stime,etime,num,name,depart,historyname,record,nowname,ctime,type,astime,aetime,days,reason,pic) SELECT '$rid','$title','$status','$result','$stime','$etime','$number','$name','$depart','$historyname','$record','$nowname','$ctime','$type','$astime','$aetime','$days','$reason','$pic' FROM DUAL WHERE '$rid' NOT IN (SELECT rid FROM details)");
             if(mysqli_errno($conn)){
                 echo mysqli_error($conn);
