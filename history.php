@@ -33,7 +33,7 @@
 
     }//数据查询
     ?>
-    <a name="返回首页" href="file_upload.html">返回首页</a>
+    <a name="返回上传" href="file_upload.html">返回上传</a><a name="返回首页" href="index.php">返回首页</a>
 </table>
 </body>
 </html>
