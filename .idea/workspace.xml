@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741ab651-9615-48f5-a2e2-728e57bc3caa" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Manage/upfiles/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Manage/upload.php" afterPath="$PROJECT_DIR$/Manage/upload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/vocation.sql" afterPath="$PROJECT_DIR$/sql/vocation.sql" />
     </list>
     <ignored path="vocation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,18 +35,6 @@
                 <marker date="1470396178952" expanded="true" signature="3635:4018" placeholder="INSERT INTO details... " />
                 <marker date="1470396178952" expanded="true" signature="3776:4018" placeholder="SELECT '${$r... DUAL" />
                 <marker date="1470396178952" expanded="true" signature="3994:4017" placeholder="SELECT rid F... details" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="allusers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Manage/allusers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.365079">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-              <folding>
-                <marker date="1470384058549" expanded="true" signature="474:493" placeholder="SELECT * FRO... users" />
               </folding>
             </state>
           </provider>
@@ -93,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.709531">
+            <state vertical-scroll-proportion="-14.212121">
               <caret line="65" column="60" selection-start-line="65" selection-start-column="60" selection-end-line="65" selection-end-column="60" />
               <folding>
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -105,6 +91,16 @@
                 <marker date="1470397734759" expanded="true" signature="2305:2415" placeholder="SELECT SUM(d... details" />
                 <marker date="1470397734759" expanded="true" signature="2484:2594" placeholder="SELECT SUM(d... details" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Manage/upfiles/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.036036037">
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -190,6 +186,7 @@
         <option value="$PROJECT_DIR$/Manage/index.php" />
         <option value="$PROJECT_DIR$/Manage/upload.php" />
         <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/Manage/upfiles/README.md" />
       </list>
     </option>
   </component>
@@ -277,6 +274,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Manage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="upfiles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vocation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vocation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -297,6 +312,7 @@
       <recent name="D:\nginx-1.11.2\html\vocation\config" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\nginx-1.11.2\html\vocation\Manage\upfiles" />
       <recent name="D:\nginx-1.11.2\html\vocation\Manage" />
       <recent name="D:\nginx-1.11.2\html\vocation" />
     </key>
@@ -378,7 +394,13 @@
       <option name="project" value="LOCAL" />
       <updated>1470393564323</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="V0.1.1 bug fixed">
+      <created>1470397806317</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1470397806317</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -421,7 +443,8 @@
     <MESSAGE value="增加年假使用天数查询" />
     <MESSAGE value="后台管理页面添加，目录修改" />
     <MESSAGE value="V0.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="V0.1" />
+    <MESSAGE value="V0.1.1 bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="V0.1.1 bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -699,7 +722,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.709531">
+        <state vertical-scroll-proportion="-14.212121">
           <caret line="65" column="60" selection-start-line="65" selection-start-column="60" selection-end-line="65" selection-end-column="60" />
           <folding>
             <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -708,6 +731,14 @@
             <marker date="1470397734759" expanded="true" signature="2305:2415" placeholder="SELECT SUM(d... details" />
             <marker date="1470397734759" expanded="true" signature="2484:2594" placeholder="SELECT SUM(d... details" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Manage/upfiles/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.036036037">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
