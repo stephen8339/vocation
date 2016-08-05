@@ -12,7 +12,7 @@
 <table style='text-align-all: left' border='1'>
     <tr><th>审批编号</th><th>标题</th><th>审批状态</th><th>审批结果</th><th>审批发起时间</th><th>审批完成时间</th><th>发起人工号</th><th>发起人姓名</th><th>发起人部门</th><th>历史审批人姓名</th><th>请假类型</th><th>请假天数</th><th>请假事由</th><th>已使用年假</th></tr>
     <?php
-    require_once 'functions.php';
+    require_once './config/functions.php';
     if(empty($_GET['name'])){
         die('您没有输入名字！');
     }else{

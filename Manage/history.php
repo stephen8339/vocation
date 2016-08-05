@@ -8,7 +8,7 @@
 <table style='text-align-all: left' border='1'>
     <tr><th>审批编号</th><th>标题</th><th>审批状态</th><th>审批结果</th><th>审批发起时间</th><th>审批完成时间</th><th>发起人工号</th><th>发起人姓名</th><th>发起人部门</th><th>历史审批人姓名</th><th>请假类型</th><th>请假天数</th><th>请假事由</th></tr>
     <?php
-    require_once 'functions.php';
+    require_once '../config/functions.php';
     $conn = connectDb();
     $mysql_result = mysqli_query($conn,"SELECT * FROM details WHERE status = '完成'");
     $dataCount = mysqli_num_rows($mysql_result);
@@ -33,7 +33,7 @@
 
     }//数据查询
     ?>
-    <a name="返回上传" href="file_upload.html">返回上传</a><a name="返回首页" href="index.php">返回首页</a>
+    <a name="返回首页" href="index.php">返回首页</a>
 </table>
 </body>
 </html>

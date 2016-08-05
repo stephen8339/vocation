@@ -9,7 +9,7 @@
 //namespace Home\Service;
 //use Think\Model;
 
-require_once 'functions.php';//DB配置文件
+require_once './config/functions.php';//DB配置文件
 
 define('SITE_PATH', getcwd());
 $conn = connectDb();//连接数据库
