@@ -8,9 +8,11 @@
 <h2 class="chart-title">曜石假期查询系统</h2>
 <form action="index.php" method="get">
     姓名：<input type="text" name="name"><input type="submit" value="提交">
+    年假每年八月一日重置，所以查询的假期从2016.8.1开始，之前的不提供查询。
+<!--    新手系统，各位程序员大大别看代码啦，太丑，不好意思，如果愿意帮忙改进，源码可以从https://github.com/stephen8339/vocation下载-->
 </form>
 <table style='text-align-all: left' border='1'>
-    <tr><th>审批编号</th><th>标题</th><th>审批状态</th><th>审批结果</th><th>审批发起时间</th><th>审批完成时间</th><th>发起人工号</th><th>发起人姓名</th><th>发起人部门</th><th>历史审批人姓名</th><th>请假类型</th><th>请假天数</th><th>请假事由</th><th>已使用年假</th></tr>
+    <tr><th>审批编号</th><th>标题</th><th>审批状态</th><th>审批结果</th><th>审批发起时间</th><th>审批完成时间</th><th>发起人工号</th><th>发起人姓名</th><th>发起人部门</th><th>历史审批人姓名</th><th>请假类型</th><th>请假天数</th><th>请假事由</th></tr>
     <?php
     require_once './config/functions.php';
     if(empty($_GET['name'])){
@@ -19,10 +21,7 @@
         $user = $_GET['name'];
         $conn = connectDb();
         $mysql_result = mysqli_query($conn,"SELECT * FROM details WHERE status = '完成' AND name = '$user'");
-        $mysql_sum_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND name = '$user' AND stime >= '2016-08-01'");
         $dataCount = mysqli_num_rows($mysql_result);
-        $result_sum_arr = mysqli_fetch_assoc($mysql_sum_result);
-        $sumdays = $result_sum_arr['SUM(days)'];
         for($i=0;$i<$dataCount;$i++){
             $result_arr = mysqli_fetch_assoc($mysql_result);
 
@@ -40,9 +39,29 @@
             $days = $result_arr['days'];
             $reason = $result_arr['reason'];
 
-            echo "<tr><td>$rid</td><td>$title</td><td>$status</td><td>$result</td><td>$stime</td><td>$etime</td><td>$num</td><td>$name</td><td>$depart</td><td>$history</td><td>$type</td><td>$days</td><td>$reason</td><td>$sumdays</td></tr>";
+            echo "<tr><td>$rid</td><td>$title</td><td>$status</td><td>$result</td><td>$stime</td><td>$etime</td><td>$num</td><td>$name</td><td>$depart</td><td>$history</td><td>$type</td><td>$days</td><td>$reason</td></tr>";
 
     }//数据查询
+    }
+
+    ?>
+    <tr><th>总年假</th><th>已使用年假</th><th>剩余年假</th></tr>
+    <?php
+    require_once './config/functions.php';
+    if(empty($_GET['name'])){
+        die('您没有输入名字！');
+    }else{
+        $user = $_GET['name'];
+        $conn = connectDb();
+        $mysql_vocationall_result = mysqli_query($conn,"SELECT year_vocations FROM users WHERE name = '$user'");
+        $mysql_result = mysqli_query($conn,"SELECT * FROM details WHERE status = '完成' AND name = '$user'");
+        $mysql_sum_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND name = '$user' AND stime >= '2016-08-01'");
+        $result_sum_arr = mysqli_fetch_assoc($mysql_sum_result);
+        $result_vocationsall_arr = mysqli_fetch_assoc($mysql_vocationall_result);
+        $sumdays = $result_sum_arr['SUM(days)'];
+        $all_year_vocations = $result_vocationsall_arr['year_vocations'];
+        $year_vocations = $all_year_vocations - $sumdays;
+        echo "<tr><td>$all_year_vocations</td><td>$sumdays</td><td>$year_vocations</td></tr>";//数据查询
     }
 
     ?>

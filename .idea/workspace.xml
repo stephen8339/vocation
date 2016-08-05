@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="741ab651-9615-48f5-a2e2-728e57bc3caa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Manage/allusers.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Manage/delete.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Manage/delserver.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Manage/edit.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Manage/editserver.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Manage/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sql/vocation.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/config.php" afterPath="$PROJECT_DIR$/config/config.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/file_upload.html" afterPath="$PROJECT_DIR$/Manage/file_upload.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/functions.php" afterPath="$PROJECT_DIR$/config/functions.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/history.php" afterPath="$PROJECT_DIR$/Manage/history.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/upload.php" afterPath="$PROJECT_DIR$/Manage/upload.php" />
     </list>
     <ignored path="vocation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,16 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="file_upload.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Manage/file_upload.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6363637">
-              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="upload.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Manage/upload.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,16 +77,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Manage/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34470376">
+            <state vertical-scroll-proportion="-5.818182">
               <caret line="89" column="92" selection-start-line="89" selection-start-column="92" selection-end-line="89" selection-end-column="92" />
               <folding>
                 <element signature="n#style#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="e#1507#1589#0#PHP" expanded="true" />
                 <marker date="1470389038603" expanded="true" signature="802:821" placeholder="SELECT * FRO... users" />
                 <marker date="1470389038603" expanded="true" signature="2014:2085" placeholder="INSERT INTO users... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.21543986">
+              <caret line="11" column="89" selection-start-line="11" selection-start-column="89" selection-end-line="11" selection-end-column="89" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1470392117341" expanded="true" signature="859:919" placeholder="SELECT * FRO... details" />
+                <marker date="1470392117341" expanded="true" signature="2177:2230" placeholder="SELECT year_... users" />
+                <marker date="1470392117341" expanded="true" signature="2278:2338" placeholder="SELECT * FRO... details" />
+                <marker date="1470392117341" expanded="true" signature="2390:2484" placeholder="SELECT SUM(d... details" />
               </folding>
             </state>
           </provider>
@@ -180,7 +176,6 @@
         <option value="$PROJECT_DIR$/showdata.php" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/history.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/upload.php" />
         <option value="$PROJECT_DIR$/Manage/file_upload.html" />
         <option value="$PROJECT_DIR$/Manage/upload.php" />
@@ -193,6 +188,7 @@
         <option value="$PROJECT_DIR$/Manage/edit.php" />
         <option value="$PROJECT_DIR$/Manage/delete.php" />
         <option value="$PROJECT_DIR$/Manage/index.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -369,7 +365,13 @@
       <option name="project" value="LOCAL" />
       <updated>1470381971135</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="后台管理页面添加，目录修改">
+      <created>1470389119427</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1470389119427</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -410,7 +412,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="主页添加" />
     <MESSAGE value="增加年假使用天数查询" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加年假使用天数查询" />
+    <MESSAGE value="后台管理页面添加，目录修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="后台管理页面添加，目录修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -575,17 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2727275">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding>
-            <marker date="1470382692003" expanded="true" signature="736:796" placeholder="SELECT * FRO... details" />
-            <marker date="1470382692003" expanded="true" signature="848:942" placeholder="SELECT SUM(d... details" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.090909">
@@ -686,13 +678,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Manage/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34470376">
+        <state vertical-scroll-proportion="-5.818182">
           <caret line="89" column="92" selection-start-line="89" selection-start-column="92" selection-end-line="89" selection-end-column="92" />
           <folding>
             <element signature="n#style#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#1507#1589#0#PHP" expanded="true" />
             <marker date="1470389038603" expanded="true" signature="802:821" placeholder="SELECT * FRO... users" />
             <marker date="1470389038603" expanded="true" signature="2014:2085" placeholder="INSERT INTO users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21543986">
+          <caret line="11" column="89" selection-start-line="11" selection-start-column="89" selection-end-line="11" selection-end-column="89" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1470392117341" expanded="true" signature="859:919" placeholder="SELECT * FRO... details" />
+            <marker date="1470392117341" expanded="true" signature="2177:2230" placeholder="SELECT year_... users" />
+            <marker date="1470392117341" expanded="true" signature="2278:2338" placeholder="SELECT * FRO... details" />
+            <marker date="1470392117341" expanded="true" signature="2390:2484" placeholder="SELECT SUM(d... details" />
           </folding>
         </state>
       </provider>
