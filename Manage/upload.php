@@ -106,10 +106,6 @@ if(empty($_FILES['file_path']['name'])){
             $days = $info['days'];
             $reason = $info['reason'];
             $pic = $info['pic'];
-            echo $name;
-            echo "<br />";
-            echo $days;
-            echo "<br />";
             mysqli_query($conn,"INSERT INTO details(rid,title,status,result,stime,etime,num,name,depart,historyname,record,nowname,ctime,type,astime,aetime,days,reason,pic) SELECT '$rid','$title','$status','$result','$stime','$etime','$number','$name','$depart','$historyname','$record','$nowname','$ctime','$type','$astime','$aetime','$days','$reason','$pic' FROM DUAL WHERE '$rid' NOT IN (SELECT rid FROM details)");
             if(mysqli_errno($conn)){
                 echo mysqli_error($conn);
