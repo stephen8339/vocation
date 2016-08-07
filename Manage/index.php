@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>主页</title>
+    <title>后台管理</title>
 </head>
 <body>
 <form action="index.php" method="post">
