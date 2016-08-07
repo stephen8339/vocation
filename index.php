@@ -20,7 +20,7 @@
     }else{
         $user = $_GET['name'];
         $conn = connectDb();
-        $mysql_result = mysqli_query($conn,"SELECT * FROM details WHERE status = '完成' AND name = '$user'");
+        $mysql_result = mysqli_query($conn,"SELECT * FROM details WHERE status = '完成' AND name = '$user' AND stime >= '2016-08-01'");
         $dataCount = mysqli_num_rows($mysql_result);
         for($i=0;$i<$dataCount;$i++){
             $result_arr = mysqli_fetch_assoc($mysql_result);
@@ -41,11 +41,11 @@
 
             echo "<tr><td>$rid</td><td>$title</td><td>$status</td><td>$result</td><td>$stime</td><td>$etime</td><td>$num</td><td>$name</td><td>$depart</td><td>$history</td><td>$type</td><td>$days</td><td>$reason</td></tr>";
 
-    }//数据查询
+    }//具体请假数据查询
     }
 
     ?>
-    <tr><th>总年假</th><th>已使用事假</th><th>已使用年假</th><th>剩余年假</th></tr>
+    <tr><th>总年假</th><th>已使用事假</th><th>已使用病假</th><th>已使用年假</th><th>剩余年假</th></tr>
     <?php
     require_once './config/functions.php';
     if(empty($_GET['name'])){
@@ -56,14 +56,26 @@
         $mysql_vocationall_result = mysqli_query($conn,"SELECT year_vocations FROM users WHERE name = '$user'");//查询总年假天数
         $mysql_sum_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '年假' AND name = '$user' AND stime >= '2016-08-01'");//查询已使用年假天数
         $mysql_sum_leave_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '事假' AND name = '$user' AND stime >= '2016-08-01'");//查询已使用年假天数
+        $mysql_sum_sick_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '病假' AND name = '$user' AND stime >= '2016-08-01'");//查询已使用病假天数
         $result_sum_arr = mysqli_fetch_assoc($mysql_sum_result);
         $result_sum_leave_arr = mysqli_fetch_assoc($mysql_sum_leave_result);
+        $result_sum_sick_arr = mysqli_fetch_assoc($mysql_sum_sick_result);
         $result_vocationsall_arr = mysqli_fetch_assoc($mysql_vocationall_result);
         $sumdays = $result_sum_arr['SUM(days)'];
         $leavedays = $result_sum_leave_arr['SUM(days)'];
+        $sickdays = $result_sum_sick_arr['SUM(days)'];
         $all_year_vocations = $result_vocationsall_arr['year_vocations'];
+        if (empty($leavedays)){
+            $leavedays = 0;
+        }
+        if (empty($sumdays)){
+            $sumdays = 0;
+        }if (empty($sickdays)){
+            $sickdays = 0;
+        }
+
         $year_vocations = $all_year_vocations - $sumdays;
-        echo "<tr><td>$all_year_vocations</td><td>$leavedays</td><td>$sumdays</td><td>$year_vocations</td></tr>";//数据查询
+        echo "<tr><td>$all_year_vocations</td><td>$leavedays</td><td>$sickdays</td><td>$sumdays</td><td>$year_vocations</td></tr>";//假期统计数据查询
     }
 
     ?>
