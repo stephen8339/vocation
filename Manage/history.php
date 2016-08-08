@@ -7,6 +7,12 @@
 <body>
 <form action="history.php" method="get">
     姓名：<input type="text" name="name"><br>
+    类型：<select name="type">
+        <option value="事假">事假</option>
+        <option value="年假">年假</option>
+        <option value="病假">病假</option>
+        <option value="调休">调休</option>
+    </select><br>
     开始日期：<input type="datetime-local" name="stime">结束日期：<input type="datetime-local" name="etime"><br>
     <input type="submit" value="提交">
 </form>
@@ -24,7 +30,8 @@
         $name = $_GET['name'];
         $stime = $_GET['stime'];
         $etime = $_GET['etime'];
-        $mysql_result = mysqli_query($conn,"SELECT * FROM details WHERE status = '完成' AND name LIKE '%$name%' AND stime >= '$stime' AND stime <='$etime'");
+        $type = $_GET['type'];
+        $mysql_result = mysqli_query($conn,"SELECT * FROM details WHERE status = '完成' AND name LIKE '%$name%' AND type = '$type' AND stime >= '$stime' AND stime <='$etime'");
     }
 
     $dataCount = mysqli_num_rows($mysql_result);
