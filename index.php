@@ -7,12 +7,12 @@
 <body>
 <h2 class="chart-title">曜石假期查询系统</h2>
 <form action="index.php" method="get">
-    姓名：<input type="text" name="name"><input type="submit" value="提交">
+    姓名：<input type="text" placeholder="姓名必须填写完整" name="name"><input type="submit" value="提交">
     年假每年八月一日重置，所以查询的假期从2016.8.1开始，之前的和未通过审批的不提供查询。
 <!--    新手系统，各位程序员大大别看代码啦，太丑，不好意思，如果愿意帮忙改进，源码可以从https://github.com/stephen8339/vocation下载-->
 </form>
 <table style='text-align-all: left' border='1'>
-    <tr><th>审批编号</th><th>标题</th><th>审批状态</th><th>审批结果</th><th>审批发起时间</th><th>审批完成时间</th><th>发起人工号</th><th>发起人姓名</th><th>发起人部门</th><th>历史审批人姓名</th><th>请假类型</th><th>请假天数</th><th>请假事由</th></tr>
+    <tr><th>审批编号</th><th>标题</th><th>审批状态</th><th>审批结果</th><th>审批发起时间</th><th>审批完成时间</th><th>发起人工号</th><th>发起人姓名</th><th>发起人部门</th><th>历史审批人姓名</th><th>请假类型</th><th>请假天数</th><!--<th>请假事由</th>--></tr>
     <?php
     require_once './config/functions.php';
     if(empty($_GET['name'])){
@@ -39,7 +39,7 @@
             $days = $result_arr['days'];
             $reason = $result_arr['reason'];
 
-            echo "<tr><td>$rid</td><td>$title</td><td>$status</td><td>$result</td><td>$stime</td><td>$etime</td><td>$num</td><td>$name</td><td>$depart</td><td>$history</td><td>$type</td><td>$days</td><td>$reason</td></tr>";
+            echo "<tr><td>$rid</td><td>$title</td><td>$status</td><td>$result</td><td>$stime</td><td>$etime</td><td>$num</td><td>$name</td><td>$depart</td><td>$history</td><td>$type</td><td>$days</td><!--<td>$reason</td>--></tr>";
 
     }//具体请假数据查询
     }
