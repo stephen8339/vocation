@@ -8,7 +8,7 @@
 <h2 class="chart-title">曜石假期查询系统</h2>
 <form action="index.php" method="get">
     姓名：<input type="text" placeholder="姓名必须填写完整" name="name"><input type="submit" value="提交">
-    年假每年八月一日重置，所以查询的假期从2016.8.1开始，之前的和未通过审批的不提供查询。
+    年假每年八月一日重置，所以查询的假期从2016.8.1开始，之前的和未通过审批的不提供查询，假期信息每月更新一次。
 <!--    新手系统，各位程序员大大别看代码啦，太丑，不好意思，如果愿意帮忙改进，源码可以从https://github.com/stephen8339/vocation下载-->
 </form>
 <table style='text-align-all: left' border='1'>
