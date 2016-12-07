@@ -21,6 +21,7 @@ if(isset($_GET['id'])&&!empty($_GET['id'])){
     $result_arr = mysqli_fetch_assoc($result);
     $name = $result_arr['name'];
     $date = $result_arr['intime'];
+    $regdate = $result_arr['regulartime'];
     $year_vocations = $result_arr['year_vocations'];
 }else{
     die('id is empty!');
@@ -34,9 +35,12 @@ if(isset($_GET['id'])&&!empty($_GET['id'])){
 <div>姓名：
     <input type="text" name="name" value="<?php echo $name?>">
 </div>
-    <div>入职日期：
+<div>入职日期：
     <input type="date" name="date" value="<?php echo $date?>">
 </div>
+    <div>转正日期：
+        <input type="date" name="regdate" value="<?php echo $regdate?>">
+    </div>
 <div>总年假天数：
     <input type="text" name="year_vocations" value="<?php echo $year_vocations?>">
 </div>

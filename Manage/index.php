@@ -15,6 +15,9 @@
     <div>入职时间:
         <input type="date" name="date">
     </div>
+    <div>转正时间:
+        <input type="date" name="regdate">
+    </div>
     <div>总年假天数:
         <input type="text" name="year_vocations">
     </div>
@@ -22,7 +25,7 @@
     <a href="file_upload.html">上传假期数据</a><br>
     <a href="history.php">请假明细查询</a>
     <table style='text-align-all: left' border='1'>
-        <tr><th>id</th><th>姓名</th><th>入职时间</th><th>总年假天数</th><th>修改用户</th><th>删除用户</th></tr>
+        <tr><th>id</th><th>姓名</th><th>入职时间</th><th>转正时间</th><th>总年假天数</th><th>修改用户</th><th>删除用户</th></tr>
         <?php
         /**
          * Created by PhpStorm.
@@ -45,9 +48,10 @@
             $id = $result_arr['id'];
             $name = $result_arr['name'];
             $date = $result_arr['intime'];
+            $regdate = $result_arr['regulartime'];
             $year_vocations = $result_arr['year_vocations'];
 
-            echo "<tr><td>$id</td><td>$name</td><td>$date</td><td>$year_vocations</td><td><a href='edit.php?id=$id'>修改</a></td><td><a href='delete.php?id=$id'>删除</a></td></tr>";
+            echo "<tr><td>$id</td><td>$name</td><td>$date</td><td>$regdate</td><td>$year_vocations</td><td><a href='edit.php?id=$id'>修改</a></td><td><a href='delete.php?id=$id'>删除</a></td></tr>";
 //    print_r(mysqli_fetch_assoc($result));
 
         }
