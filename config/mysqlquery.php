@@ -7,11 +7,12 @@
  */
 //require_once '../index.php';
 require_once 'functions.php';
+require_once 'config.php';
 $conn = connectDb();
 $mysql_vocationall_result = mysqli_query($conn,"SELECT year_vocations FROM users WHERE name = '$user'");//查询总年假天数
-$mysql_sum_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '年假' AND name = '$user' AND stime >= '2016-08-01'");//查询已使用年假天数
-$mysql_sum_leave_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '事假' AND name = '$user' AND stime >= '2016-08-01'");//查询已使用年假天数
-$mysql_sum_sick_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '病假' AND name = '$user' AND stime >= '2016-08-01'");//查询已使用病假天数
+$mysql_sum_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '年假' AND name = '$user' AND stime >= '$querydate'");//查询已使用年假天数
+$mysql_sum_leave_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '事假' AND name = '$user' AND stime >= '$querydate'");//查询已使用事假天数
+$mysql_sum_sick_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '病假' AND name = '$user' AND stime >= '$querydate'");//查询已使用病假天数
 $result_sum_arr = mysqli_fetch_assoc($mysql_sum_result);
 $result_sum_leave_arr = mysqli_fetch_assoc($mysql_sum_leave_result);
 $result_sum_sick_arr = mysqli_fetch_assoc($mysql_sum_sick_result);
