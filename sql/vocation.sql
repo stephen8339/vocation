@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50713
 File Encoding         : 65001
 
-Date: 2016-12-07 15:48:31
+Date: 2016-12-08 11:36:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -205,6 +205,7 @@ CREATE TABLE `users` (
   `name` varchar(80) NOT NULL,
   `intime` date NOT NULL COMMENT '入职日期',
   `regulartime` date DEFAULT NULL COMMENT '转正日期',
+  `year_vocations_left` int(50) DEFAULT NULL,
   `year_vocations` int(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
@@ -212,31 +213,31 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('2', '周希', '2013-08-01', null, '13');
-INSERT INTO `users` VALUES ('3', '张行林', '2014-03-21', null, '12');
-INSERT INTO `users` VALUES ('4', '梁星', '2014-12-22', null, '11');
-INSERT INTO `users` VALUES ('5', '洪亮', '2013-08-01', null, '13');
-INSERT INTO `users` VALUES ('6', '李然', '2013-08-01', null, '13');
-INSERT INTO `users` VALUES ('7', '乐嘉栋', '2016-01-18', null, '10');
-INSERT INTO `users` VALUES ('8', '罗赛', '2014-06-23', null, '12');
-INSERT INTO `users` VALUES ('9', '周嘉伟', '2014-06-03', null, '12');
-INSERT INTO `users` VALUES ('10', '杨㛃', '2016-08-03', null, '10');
-INSERT INTO `users` VALUES ('11', '曹萍', '2015-08-05', null, '11');
-INSERT INTO `users` VALUES ('12', '高继成', '2014-07-29', null, '12');
-INSERT INTO `users` VALUES ('13', '王悦', '2016-04-05', null, '10');
-INSERT INTO `users` VALUES ('14', '吴弈', '2016-05-16', null, '10');
-INSERT INTO `users` VALUES ('15', '谭小明', '2014-06-06', null, '12');
-INSERT INTO `users` VALUES ('16', '朱翔', '2014-04-28', null, '12');
-INSERT INTO `users` VALUES ('17', '陈勇男', '2015-11-11', null, '11');
-INSERT INTO `users` VALUES ('18', '丁载悦', '2016-01-12', null, '10');
-INSERT INTO `users` VALUES ('19', '林书美', '2016-07-11', null, '10');
-INSERT INTO `users` VALUES ('20', '卢沪生', '2015-09-14', null, '11');
-INSERT INTO `users` VALUES ('21', '沈吉', '2016-04-18', null, '10');
-INSERT INTO `users` VALUES ('22', '翁蓓蓓', '2015-08-03', null, '11');
-INSERT INTO `users` VALUES ('23', '陈金金', '2015-09-01', null, '11');
-INSERT INTO `users` VALUES ('24', '钱立', '2015-08-03', null, '11');
-INSERT INTO `users` VALUES ('25', '孙益维', '2014-01-06', null, '12');
-INSERT INTO `users` VALUES ('26', '练凤燕', '2015-12-07', null, '11');
-INSERT INTO `users` VALUES ('27', '由龙', '2013-08-01', null, '13');
-INSERT INTO `users` VALUES ('28', '向东川', '2014-06-09', null, '12');
-INSERT INTO `users` VALUES ('30', '刘耸', '2014-01-20', null, '12');
+INSERT INTO `users` VALUES ('2', '周希', '2013-08-02', '2013-08-05', '13', '13');
+INSERT INTO `users` VALUES ('3', '张行林', '2014-03-21', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('4', '梁星', '2014-12-22', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('5', '洪亮', '2013-08-01', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('6', '李然', '2013-08-01', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('7', '乐嘉栋', '2016-01-18', '2016-08-03', '8', '9');
+INSERT INTO `users` VALUES ('8', '罗赛', '2014-06-23', '2016-08-03', '4', '9');
+INSERT INTO `users` VALUES ('9', '周嘉伟', '2014-06-03', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('10', '杨㛃', '2016-08-03', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('11', '曹萍', '2015-08-05', '2016-08-03', '8', '9');
+INSERT INTO `users` VALUES ('12', '高继成', '2014-07-29', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('13', '王悦', '2016-04-05', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('14', '吴弈', '2016-05-16', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('15', '谭小明', '2014-06-06', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('16', '朱翔', '2014-04-28', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('17', '陈勇男', '2015-11-11', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('18', '丁载悦', '2016-01-12', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('19', '林书美', '2016-07-11', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('20', '卢沪生', '2015-09-14', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('21', '沈吉', '2016-04-18', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('22', '翁蓓蓓', '2015-08-03', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('23', '陈金金', '2015-09-01', '2016-08-03', '7', '9');
+INSERT INTO `users` VALUES ('24', '钱立', '2015-08-03', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('25', '孙益维', '2014-01-06', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('26', '练凤燕', '2015-12-07', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('27', '由龙', '2013-08-01', '2016-08-03', '9', '9');
+INSERT INTO `users` VALUES ('28', '向东川', '2014-06-09', '2016-08-03', '6', '9');
+INSERT INTO `users` VALUES ('30', '刘耸', '2014-01-20', '2016-08-03', '8', '9');
