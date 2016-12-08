@@ -20,21 +20,25 @@ for($i=0;$i<$dataCount;$i++) {
 
     $id = $result_arr['id'];
     $name = $result_arr['name'];
-    $date = $result_arr['regulartime'];
-    $year_vocations_now = mysqli_query($conn,"SELECT DATEDIFF('$standdate','$date')");
+    $date = $result_arr['intime'];
+    $year_vocations_next = mysqli_query($conn,"SELECT DATEDIFF('$standdate','$date')");
+    $result_vocations_next = mysqli_fetch_assoc($year_vocations_next);
+    $intime_next = $result_vocations_next["DATEDIFF('$standdate','$date')"];
+    $year_vocations_now = mysqli_query($conn,"SELECT DATEDIFF(NOW(),'$date')");
     $result_vocations = mysqli_fetch_assoc($year_vocations_now);
-    $intime = $result_vocations["DATEDIFF('$standdate','$date')"];
-    $mysql_sum_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '年假' AND name = '$name' AND stime >= '$querydate'");//查询已使用年假天数
+    $intime = $result_vocations["DATEDIFF(NOW(),'$date')"];
 
-    if($intime>=365){
+    if($intime_next>=365){
         $year_vocations_calc = floor($intime/365)+$year_vocations_base;
     }else{
-        $year_vocations_calc = floor($intime*$year_vocations_base/365);
+        $year_vocations_calc = floor($intime_next*$year_vocations_base/365);
     }
 
     mysqli_query($conn,"UPDATE users SET year_vocations = '$year_vocations_calc' WHERE id = $id");
 
-    $year_vocations = $result_arr['year_vocations'];
+    $result_year_vocations = mysqli_query($conn,"SELECT year_vocations FROM users WHERE name = '$name'");
+    $year_vocations_arr = mysqli_fetch_assoc($result_year_vocations);
+    $year_vocations = $year_vocations_arr['year_vocations'];
     $mysql_sum_result = mysqli_query($conn,"SELECT SUM(days) FROM details WHERE status = '完成' AND type = '年假' AND name = '$name' AND stime >= '$querydate'");//查询已使用年假天数
     $result_sum_arr = mysqli_fetch_assoc($mysql_sum_result);
     $sumdays = $result_sum_arr['SUM(days)'];
