@@ -94,9 +94,19 @@ if(empty($date)){
     die('入职日期未输入!');
 }
 
+$regdate=$_POST['regdate'];
+if(empty($regdate)){
+    die('转正日期未输入!');
+}
+
 $year_vocations=$_POST['year_vocations'];
 if(empty($year_vocations)){
     die('用户总年假天数未输入!');
+}
+
+$left_vocations=$_POST['left_vocations'];
+if(empty($left_vocations)){
+    die('用户剩余年假天数未输入!');
 }
 
 require_once '../config/functions.php';
@@ -104,7 +114,7 @@ require_once '../config/functions.php';
 $conn = connectDb();
 if($conn){
 //    $year_vocations = intval(year_vocations);
-    mysqli_query($conn,"INSERT INTO users(name,intime,year_vocations) VALUES ('$name','$date',$year_vocations)");
+    mysqli_query($conn,"INSERT INTO users(name,intime,regulartime,year_vocations,year_vocations_left) VALUES ('$name','$date','$regdate',$year_vocations,$left_vocations)");
 
     if(mysqli_errno($conn)){
         echo mysqli_error($conn);
